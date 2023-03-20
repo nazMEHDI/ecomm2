@@ -1,0 +1,33 @@
+<?php
+$id = '';
+if (!empty($this->zoneconfig['conf']['id'])) {
+    $id .= $this->newsId . '_' . $this->zoneconfig['conf']['id'];
+}
+?>
+<div id="<?= $id ?>" data-melisKey="<?= $this->melisKey; ?>" class="mcn-width-100">
+<?php if (!empty($this->newsURI)): ?>
+    <div id="<?= $this->newsId; ?>_news-preview-iframe-container" class="col-md-12">
+        <div id="loadingZone" class="overlay-loader">
+            <img class="loader-icon spinning-cog" src="/MelisCore/assets/images/cog12.svg" data-cog="cog12">
+        </div>
+        <iframe style="min-height: 800px;width:100%" class="news-prev-iframe"
+                src="<?= $this->newsURI; ?>"
+                scrolling="no"
+                onload="(function() {
+                    // Fixes height issue of the iFrame
+                    melisHelper.removeLoadingZone($body.find('#<?= $this->newsId; ?>_news-preview-iframe-container'));
+                    var previewFrame = $body.find('#<?= $this->newsId; ?>_news-preview-iframe-container .news-prev-iframe');
+                    var height = previewFrame.contents().height();
+                    previewFrame.css('height', height);
+                })();">
+
+        </iframe>
+    </div>
+<?php elseif ($this->noPageDetails): ?>
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            <p><?= $this->labels['noPageNewsDetails']; ?></p>
+        </div>
+    </div>
+<?php endif; ?>
+</div>

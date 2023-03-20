@@ -1,0 +1,27 @@
+<div id="templateupdateformalert"></div>
+<span id="tplid" class="hidden"></span>
+<p class="modal-text-info"><?= $this->translate('tr_meliscms_tool_template_info')?> </p>
+<?php 
+$form = $this->meliscms_tool_template_edit;
+
+/** Adding appropriate error message for disabled/uninstalled templating engine */
+$tplType = $form->get('tpl_type');
+$tplType->setLabel($tplType->getLabel() . "<span id='tpl-type-error' style='display: none;'> (" . $this->translate('tr_meliscms_tool_templates_tpl_typ_module_ko') . ")</span>");
+
+echo $this->form()->openTag($form);
+echo $this->melisFieldCollection($form);
+echo $this->form()->closeTag();
+?>
+
+
+<?php 
+
+echo $this->melisModalInvoker()->render(
+    array(
+        'text' => '<i class="fa fa-times"></i> '.$this->translate('tr_meliscms_common_close'),
+        'class' => 'btn btn-danger float-left'
+    ), 'dismiss');
+
+?>
+
+<a class="btn btn-success float-right" id="btnTemplateUpdate"><i class="fa fa-save"></i>  <?= $this->translate('tr_meliscms_template_save'); ?></a>

@@ -1,0 +1,84 @@
+<style>
+    .thumb-contenido {
+        margin-bottom: 1%;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+    .news-details-author-data {
+        margin-top:40px !important;
+    }
+    .news-details-author-data img {
+        width:90px;
+        float:left;
+    }
+    blockquote {
+        position:relative;
+        clear:both;
+        overflow:hidden;
+    }
+    blockquote footer {
+        float:left;
+        margin-top:40px;
+        margin-left:20px;
+
+    }
+</style>
+<?php
+   $this->news = (array) $this->news;
+?>
+<div id="<?= $this->pluginId; ?>">
+    <?php if (!empty($this->news)): ?>
+        <div class="container">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row hidden-md hidden-lg">
+                            <h1 class="text-center"><?= $this->news['cnews_title']; ?></h1>
+                        </div>
+                        <?php if (!empty($this->news['cnews_image1'])) { ?>
+                            <div class="float-left col-md-4 col-12 thumb-contenido">
+                                <img class="center-block img-fluid" src="<?= $this->news['cnews_image1'] ?>"/>
+                            </div>
+                        <?php } ?>
+                        <div class="">
+                            <h1 class="hidden-xs hidden-sm"><?= $this->news['cnews_title']; ?></h1>
+                            <small><?= date('F d, Y', strtotime($this->news['cnews_publish_date'])) ?></small>
+                            <br>
+                            <?php
+                            $ctr = 1;
+                            do {
+                                $tmp = 'cnews_paragraph' . $ctr++;
+
+                                if (!empty($this->news[$tmp])) {
+                                    echo '<p class="text-justify">' . $this->news[$tmp] . '</p>';
+                                }
+                                } while ($ctr < 11);
+                            ?>
+                            <?php
+                            $userAccountData = $this->news['cnews_author_account'] ?? null ;
+                            if (is_array($userAccountData)) {?>
+                                <?php
+                                ?>
+                                <blockquote>
+                                    <div class="news-details-author-data">
+                                        <p><span>Email :</span> <?=$userAccountData['uac_email']?></p>
+                                        <?php if (! empty($userAccountData['uac_picture'])) {?>
+                                            <img src="data:image/jpge;base64,<?=  base64_encode($userAccountData['uac_picture']) ?>" class="rounded-circle">
+                                        <?php } else {?>
+                                            <img src="MelisCore/images/profile/default_picture.jpg" alt="">
+                                        <?php }?>
+                                    </div>
+                                    <footer><?= $userAccountData['uac_firstname'] . " " . $userAccountData['uac_lastname'] ?></footer>
+                                </blockquote>
+                            <?php }?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="alert alert-warning" role="alert">
+            No result
+        </div>
+    <?php endif; ?>
+</div>

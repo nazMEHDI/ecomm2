@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+      	<title>SiteSample</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div id="content">
+			<?= $this->content; ?>
+		</div>
+		<div id="footer">
+	        <!-- Datas Page : 
+			idPage = <?= $this->idPage; ?> /
+			pageLangId = <?= $this->pageLangId; ?> /
+			pageLangLocale = <?= $this->pageLangLocale; ?> /
+			renderType = <?= $this->renderType; ?> /
+			renderMode = <?= $this->renderMode; ?>
+			-->
+		</div>
+        <?php
+        /* Placed js at the end of the document so the pages load faster */
+        // jquery
+         echo $this->inlineScript()->appendFile($this->basePath('/SiteSample/js/vendor/jquery-2.2.4.min.js'));
+        ?>
+	</body>
+</html>

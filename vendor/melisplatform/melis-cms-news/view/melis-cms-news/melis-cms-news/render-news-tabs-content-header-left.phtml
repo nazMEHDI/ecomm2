@@ -1,0 +1,15 @@
+<?php 
+    /**
+     * Disabling workflow functionality when news id is not given
+     */
+    $zoneConfigInterface = $this->zoneconfig['interface'];
+    //do not show the workflow button if Small Business Module is not activated
+    if ($this->sbIsDisabled) {
+        unset($zoneConfigInterface['meliscmsnews_content_tabs_properties_header_workflow']);
+    }
+	if(!empty($zoneConfigInterface)) {
+	    foreach($zoneConfigInterface as $keyConfig => $menuConfig) {
+	        echo $this->$keyConfig;
+	    }
+	}
+?>

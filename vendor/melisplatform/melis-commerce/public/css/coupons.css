@@ -1,0 +1,21 @@
+.assignedProduct i,
+.assignedClients i {
+	margin: 10px;
+}
+
+.filter-bar .row .fb-dt-left .order-list-table-filter-limit-order,
+.filter-bar .row .fb-dt-left .order-list-table-filter-date-order {
+    float: left;
+}
+
+.datepicker-dropdown tbody tr td {
+    cursor: pointer;
+}
+
+.datepicker-dropdown tbody tr td.day.active {
+    color: #fff;
+}
+
+.datepicker-dropdown .datepicker-switch {
+    text-align: center;
+}

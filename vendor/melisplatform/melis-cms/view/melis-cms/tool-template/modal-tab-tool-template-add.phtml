@@ -1,0 +1,20 @@
+<div id="templateaddformalert"></div>
+<p class="modal-text-info"><?= $this->translate('tr_meliscms_tool_template_info')?> </p>
+<?php 
+$form = $this->meliscms_tool_template_add;
+echo $this->form()->openTag($form);
+echo $this->melisFieldCollection($form);
+echo $this->form()->closeTag();
+?>
+
+
+<?php 
+echo $this->melisModalInvoker()->render(
+    array(
+        'text' => '<i class="fa fa-times"></i> '.$this->translate('tr_meliscms_common_close'),
+        'class' => 'btn btn-danger float-left'
+    ), 'dismiss');
+
+?>
+
+<button class="btn btn-success float-right" onclick="toolTemplate.addNewTemplate()" id="btnTemplateAdd"><i class="fa fa-plus"></i>  <?= $this->translate('tr_meliscms_template_add'); ?></button>
