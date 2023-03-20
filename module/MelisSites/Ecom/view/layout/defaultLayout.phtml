@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ecom</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Add menu -->
+    <?= $this->layout()->header ?>
+
+    <div id="content">
+        <?= $this->content; ?>
+    </div>
+    <div id="footer">
+        <!-- Datas Page : 
+			idPage = <?= $this->idPage; ?> /
+			pageLangId = <?= $this->pageLangId; ?> /
+			pageLangLocale = <?= $this->pageLangLocale; ?> /
+			renderType = <?= $this->renderType; ?> /
+			renderMode = <?= $this->renderMode; ?>
+			-->
+    </div>
+    <?= $this->layout()->footer ?>
+
+    <?php
+        /* Placed js at the end of the document so the pages load faster */
+        // jquery
+         echo $this->inlineScript()->appendFile($this->basePath('/Ecom/js/vendor/jquery-2.2.4.min.js'));
+        ?>
+</body>
+
+</html>

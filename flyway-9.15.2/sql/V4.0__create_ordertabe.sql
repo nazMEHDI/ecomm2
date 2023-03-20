@@ -1,0 +1,1 @@
+CREATE TABLE `ecom`.`command` (`id` INT NOT NULL AUTO_INCREMENT , `quntity` INT NOT NULL , `price` FLOAT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

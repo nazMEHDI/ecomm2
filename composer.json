@@ -1,0 +1,50 @@
+{
+	"name": "melisplatform/melis-platform-skeleton",
+	"description": "Melis Platform Skeleton",
+	"type": "project",
+	"license": "OSL-3.0",
+	"keywords": [
+		"melis",
+		"melisplatform",
+		"platform",
+		"zf2",
+		"laminas",
+		"mvc",
+		"framework"
+	],
+	"require": {
+		"php": "^7.3|^8.0",
+		"melisplatform/melis-asset-manager": "^5.0",
+		"melisplatform/melis-composerdeploy": "^5.0",
+		"melisplatform/melis-core": "^5.0",
+		"melisplatform/melis-dbdeploy": "^5.0",
+		"melisplatform/melis-installer": "^5.0",
+		"melisplatform/melis-marketplace": "^5.0",
+		"melisplatform/melis-cms": "^5.0",
+		"melisplatform/melis-front": "^5.0",
+		"melisplatform/melis-engine": "^5.0",
+		"melisplatform/melis-cms-news": "^5.0",
+		"melisplatform/melis-cms-prospects": "^5.0",
+		"melisplatform/melis-cms-slider": "^5.0",
+		"melisplatform/melis-design": "^5.0",
+		"melisplatform/melis-tool-creator": "^5.0",
+		"melisplatform/melis-templating-plugin-creator": "^5.0",
+		"melisplatform/melis-commerce": "^5.0"
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"MelisCore\\ModuleComposerScript::executeScripts",
+			"MelisDbDeploy\\DbDeployOnComposerUpdate::postUpdate"
+		],
+		"development-disable": "laminas-development-mode disable",
+		"development-enable": "laminas-development-mode enable",
+		"development-status": "laminas-development-mode status"
+	},
+	"config": {
+		"platform-check": false,
+		"allow-plugins": {
+			"symfony/flex": false,
+			"symfony/runtime": true
+		}
+	}
+}

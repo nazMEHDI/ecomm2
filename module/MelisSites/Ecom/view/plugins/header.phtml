@@ -1,0 +1,128 @@
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__close">+</div>
+    <ul class="offcanvas__widget">
+        <li><span class="icon_search search-switch"></span></li>
+        <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        <li><a href="pages/shop-cart/id/18"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+    </ul>
+    <div class="offcanvas__logo">
+        <a href="./index.html"><img src="/Ecom/img/logo.png" alt=""></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__auth">
+        <a href="#">Login</a>
+        <a href="#">Register</a>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
+
+
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="/"><img src="/Ecom/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu">
+                    <?php if (! empty($this->menu)) : ?>
+                    <ul>
+                        <li class="active"><a href="/">Home</a></li>
+                        <?php   foreach ($this->menu[0]['pages'] as $key => $page) : ?>
+                        <?php $hasSubMenu = false ?>
+                        <!-- Check if the page have child pages with link -->
+                        <?php if (! empty($page['pages'])) : ?>
+                        <?php foreach ($page['pages'] as $subKey => $subPage) : ?>
+                        <?php if ($subPage['menu'] === 'LINK') : ?>
+                        <?php
+                                $hasSubMenu = true;
+                                break;
+                            ?>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <li class=" <?= ($hasSubMenu) ?>">
+                            <a class="<?= ($hasSubMenu) ?>"
+                                <?= ($page['menu']) == 'LINK' ? 'href="' . $page['uri'] . '"' : '' ?>
+                                style="white-space: nowrap">
+                                <?= ucfirst($page['label']) ?>
+                            </a>
+                            <?php if ($hasSubMenu) : ?>
+                            <ul class="dropdown">
+                                <!-- List sub pages -->
+                                <?php foreach ($page['pages'] as $subKey => $subPage) : ?>
+                                <?php if ($subPage['menu'] == 'LINK') : ?>
+                                <li class="leaf">
+                                    <a href="<?= $subPage['uri'] ?>" class="">
+                                        <span> <?= ucfirst($subPage['label']) ?>
+                                        </span>
+                                    </a>
+                                </li>
+                                <?php elseif ($subPage['menu'] == 'NOLINK') : ?>
+                                <li>
+                                    <a>
+                                        <span> <?= ucfirst($subPage['label']) ?>
+                                        </span>
+                                    </a>
+                                </li>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php else : ?>
+                    <div class="alert warning" style="width: 100%; margin-top: 10px;">
+                        <div class="alert_body">
+                            <i class="icon-close"></i>
+                            <?=
+                    $this->siteTranslate(
+                        'tr_demo_meliscms_no_result',
+                        $this->SiteConfig('default_lang_id'),
+                        $this->SiteConfig('site_id')
+                    )
+                ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right">
+                    <div class="header__right__auth">
+                        <a href="#">Login</a>
+                        <a href="#">Register</a>
+                    </div>
+                    <ul class="header__right__widget">
+                        <li><span class="icon_search search-switch"></span></li>
+                        <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        <li><a href="pages/shop-cart/id/18"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+
+    </div>
+</header>
